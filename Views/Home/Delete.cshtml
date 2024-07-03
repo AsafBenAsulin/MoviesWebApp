@@ -1,0 +1,31 @@
+﻿@model MoviesWebApp.Models.Movie
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<h1>Delete Movie</h1>
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="movie-card">
+    <h1>
+        @Html.DisplayFor(model => model.Title)
+    </h1>
+    <h3>
+        @Html.DisplayNameFor(model => model.Rating)
+    </h3>
+    <h3>
+        @Html.DisplayFor(model => model.Rating)
+    </h3>
+    <h3>
+        Category
+    </h3>
+    <p>
+        @Html.DisplayFor(model => model.Category.Name)
+    </p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-delete">Delete</button> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

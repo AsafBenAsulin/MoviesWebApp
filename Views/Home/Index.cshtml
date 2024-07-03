@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Movie>
+@{
+	ViewData["Title"] = "Movies List";
+}
+<h1>Movies list</h1>
+<div class="movie-grid">
+	@foreach (var movie in Model)
+	{
+		<div class="movie-card">
+			<h1>
+				@Html.DisplayFor(model => movie.Title)
+			</h1>
+			<h3>
+				@Html.DisplayNameFor(model => movie.Rating)
+			</h3>
+			<h3>
+				@Html.DisplayFor(model => movie.Rating)
+			</h3>
+			<h3>Categories:</h3>
+			<select class="form-control text-centered">
+				<option value="@movie.CategoryId">@Html.DisplayFor(model => movie.Category.Name)</option>
+				<option value="@movie.CategoryId2">@Html.DisplayFor(model => movie.Category2.Name)</option>
+			</select>
+
+			<div style="text-align: center; margin-top: 10px;">
+				<form asp-action="Edit" asp-route-id="@movie.Id" method="get" style="display: inline-block;">
+					<button type="submit" class="btn btn-edit">Edit</button>
+				</form>
+				<form asp-action="Delete" asp-route-id="@movie.Id" method="get" style="display: inline-block;">
+					<button type="submit" class="btn btn-delete">Delete</button>
+				</form>
+			</div>
+		</div>
+	}
+</div>
